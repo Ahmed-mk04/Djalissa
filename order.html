@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Djalissa - DJ-CARE Order</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="photo/Didi.png" />
+    <style>
+        .color-label {
+            cursor: pointer;
+            display: block;
+        }
+
+        .color-radio {
+            display: none;
+        }
+
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s;
+        }
+
+        .color-radio:checked+.color-box {
+            border: 2px solid #A855F7 !important;
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper page-fade" style="padding-top: 60px;">
+
+        <div class="auth-card"
+            style="width: 100%; max-width: 540px; min-height: 480px; background: rgba(171, 93, 203, 0.7); border-radius: 40px; padding: 50px 30px; display: flex; align-items: center; justify-content: center; position: relative; margin: 0 auto;">
+
+            <div
+                style="position: relative; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: linear-gradient(135deg, rgba(232,121,176,0.9), rgba(168,85,247,0.9)); border-radius: 50%; box-shadow: inset 0 4px 10px rgba(0,0,0,0.1); margin-right: 20px;">
+                <img src="photo/Robo.png" alt="DJ-Care Robot"
+                    style="position: absolute; z-index: 2; width: 145%; height: 145%; object-fit: contain; top: 40%; transform: translateY(-50%);" />
+            </div>
+
+            <div style="flex: 1; max-width: 280px; margin-top: 20px;">
+                <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+                    <div style="position: relative; margin-bottom: 20px;">
+                        <select id="orderWilaya" class="auth-input"
+                            style="appearance: none; -webkit-appearance: none; cursor: pointer; width: 100%; padding: 12px 20px; border-radius: 50px; border: none; font-size: 0.9rem; text-align: center; height: 44px; color: #666;"
+                            required>
+                            <option value="" disabled selected>Wilaya</option>
+                            <option>1- Adrar</option>
+                            <option>2- Chlef</option>
+                            <option>3- Laghouat</option>
+                            <option>4- Oum El Bouaghi</option>
+                            <option>5- Batna</option>
+                            <option>6- Béjaïa</option>
+                            <option>7- Biskra</option>
+                            <option>8- Béchar</option>
+                            <option>9- Blida</option>
+                            <option>10- Bouira</option>
+                            <option>11- Tamanrasset</option>
+                            <option>12- Tébessa</option>
+                            <option>13- Tlemcen</option>
+                            <option>14- Tiaret</option>
+                            <option>15- Tizi Ouzou</option>
+                            <option>16- Alger</option>
+                            <option>17- Djelfa</option>
+                            <option>18- Jijel</option>
+                            <option>19- Sétif</option>
+                            <option>20- Saïda</option>
+                            <option>21- Skikda</option>
+                            <option>22- Sidi Bel Abbès</option>
+                            <option>23- Annaba</option>
+                            <option>24- Guelma</option>
+                            <option>25- Constantine</option>
+                            <option>26- Médéa</option>
+                            <option>27- Mostaganem</option>
+                            <option>28- M'Sila</option>
+                            <option>29- Mascara</option>
+                            <option>30- Ouargla</option>
+                            <option>31- Oran</option>
+                            <option>32- El Bayadh</option>
+                            <option>33- Illizi</option>
+                            <option>34- Bordj Bou Arreridj</option>
+                            <option>35- Boumerdès</option>
+                            <option>36- El Tarf</option>
+                            <option>37- Tindouf</option>
+                            <option>38- Tissemsilt</option>
+                            <option>39- El Oued</option>
+                            <option>40- Khenchela</option>
+                            <option>41- Souk Ahras</option>
+                            <option>42- Tipaza</option>
+                            <option>43- Mila</option>
+                            <option>44- Aïn Defla</option>
+                            <option>45- Naâma</option>
+                            <option>46- Aïn Témouchent</option>
+                            <option>47- Ghardaïa</option>
+                            <option>48- Relizane</option>
+                            <option>49- Timimoun</option>
+                            <option>50- Bordj Badji Mokhtar</option>
+                            <option>51- Ouled Djellal</option>
+                            <option>52- Béni Abbès</option>
+                            <option>53- In Salah</option>
+                            <option>54- In Guezzam</option>
+                            <option>55- Touggourt</option>
+                            <option>56- Djanet</option>
+                            <option>57- El M'Ghair</option>
+                            <option>58- El Meniaa</option>
+                        </select>
+                        <span
+                            style="position: absolute; right: 20px; top: 13px; pointer-events: none; color: #A855F7;">&#9663;</span>
+                    </div>
+
+                    <div
+                        style="display: flex; align-items: center; background: white; border-radius: 50px; padding: 0 16px; margin-bottom: 20px; height: 44px;">
+                        <span
+                            style="font-size: 0.9rem; color: #a0a0a0; flex: 1; font-family: 'Nunito', sans-serif; text-align: left; padding-left: 8px; white-space: nowrap;">Color
+                            <span id="colorNameDisplay"
+                                style="color: #A855F7; font-weight: 800; margin-left: 4px; text-transform: capitalize;">Rose</span></span>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <label class="color-label">
+                                <input type="radio" name="orderColor" value="rose" class="color-radio" checked
+                                    onchange="document.getElementById('colorNameDisplay').innerText = this.value;">
+                                <div class="color-box" style="background: #FF69B4;"></div>
+                            </label>
+                            <label class="color-label">
+                                <input type="radio" name="orderColor" value="noir" class="color-radio"
+                                    onchange="document.getElementById('colorNameDisplay').innerText = this.value;">
+                                <div class="color-box" style="background: #333333;"></div>
+                            </label>
+                            <label class="color-label">
+                                <input type="radio" name="orderColor" value="bleu" class="color-radio"
+                                    onchange="document.getElementById('colorNameDisplay').innerText = this.value;">
+                                <div class="color-box" style="background: #3B82F6;"></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <input id="orderPrintedName" class="auth-input" type="text" placeholder="Printed Name" required
+                        style="width: 100%; padding: 12px 20px; margin-bottom: 20px; border-radius: 50px; border: none; font-size: 0.9rem; text-align: center; height: 44px; color: #666;" />
+
+                    <input id="orderPhone" class="auth-input" type="tel" placeholder="Phone Number" required
+                        maxlength="10"
+                        style="width: 100%; padding: 12px 20px; margin-bottom: 30px; border-radius: 50px; border: none; font-size: 0.9rem; text-align: center; height: 44px; color: #666;" />
+
+                    <div style="display: flex; gap: 12px; align-items: center; justify-content: center;">
+                        <button id="orderSubmitBtn" type="submit" class="auth-submit-btn"
+                            style="margin: 0; flex: 1; background: linear-gradient(90deg, #b062ca, #e1a7e9); color: white; padding: 12px 14px; font-size: 0.75rem; font-weight: 800; border-radius: 50px; box-shadow: 0 4px 12px rgba(107,33,168,0.4); border: none; cursor: pointer; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">CONFIRM
+                            ORDER</button>
+                        <div
+                            style="background: rgba(160, 90, 210, 0.6); border-radius: 50px; padding: 12px 20px; font-weight: 800; font-size: 0.75rem; color: white; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            6500 DA</div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="auth-social-row"
+                style="position: absolute; bottom: 30px; left: 0; right: 0; display: flex; justify-content: center; gap: 16px;">
+                <a class="social-icon-btn" href="tel:+213"
+                    style="width: 44px; height: 44px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"><svg
+                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.88a16 16 0 0 0 5.21 5.21l.88-1.82a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg></a>
+                <a class="social-icon-btn" href="#"
+                    style="width: 44px; height: 44px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"><svg
+                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg></a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    async function handleOrderSubmit(e) {
+        e.preventDefault();
+        const btn = document.getElementById('orderSubmitBtn');
+        btn.innerText = 'ENVOI...';
+        btn.disabled = true;
+
+        const wilaya = document.getElementById('orderWilaya').value;
+        const printedName = document.getElementById('orderPrintedName').value;
+        const phone = document.getElementById('orderPhone').value;
+        const colorInput = document.querySelector('input[name="orderColor"]:checked');
+        const color = colorInput ? colorInput.value : 'rose';
+
+        try {
+            const response = await fetch('http://localhost:5000/api/order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ wilaya, color, printedName, phone })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Succès: ' + data.message);
+                window.location.href = 'index.html';
+            } else {
+                alert('Erreur: ' + data.error);
+            }
+        } catch (err) {
+            alert('Erreur de connexion au serveur.');
+        } finally {
+            btn.innerText = 'CONFIRM ORDER';
+            btn.disabled = false;
+        }
+    }
+</script>
+
+</html>
