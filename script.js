@@ -79,4 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q && q.trim()) showToast(`🔍 Recherche : "${q}"`);
     });
   }
+
+  // Update navbar profile icon with user's photo if available
+  const profilePic = sessionStorage.getItem('profilePic');
+  if (profilePic && profilePic !== 'undefined' && profilePic !== '') {
+    document.querySelectorAll('.navbar-icon-btn').forEach(btn => {
+      if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes('sessionStorage.getItem')) {
+        btn.innerHTML = `<img src="http://localhost:5000${profilePic}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" alt="Profile">`;
+        btn.style.padding = '0';
+        btn.style.border = '2px solid #A855F7';
+        btn.style.overflow = 'hidden';
+      }
+    });
+  }
 });

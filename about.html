@@ -136,7 +136,9 @@
             <ul class="navbar-links">
                 <li><a href="partner.html">PARTNER WITH US</a></li>
             </ul>
-            <button class="navbar-icon-btn" onclick="window.location.href='login.html'" aria-label="Profile">
+            <button class="navbar-icon-btn"
+                onclick="if(sessionStorage.getItem('clientName')) { window.location.href='profile.html'; } else { window.location.href='login.html'; }"
+                aria-label="Profile">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -251,7 +253,7 @@
                 style="border: 2px solid rgba(255,255,255,0.7); border-radius: 20px; margin-top: 15px; margin-bottom: 20px; padding: 20px 10px; background: linear-gradient(135deg, rgba(168,85,247,0.9), rgba(232,121,176,0.9)); box-shadow: 0 8px 24px rgba(107,33,168,0.4);">
                 <p>Email: support@djalissa.com</p>
                 <p>Location: Saad Dahleb Blida</p>
-                <p>© 2026 Djalissa. All rights reserved.</p>
+                <p>&copy; 2026 Djalissa. All rights reserved.</p>
             </div>
         </footer>
 

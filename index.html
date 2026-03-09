@@ -23,7 +23,9 @@
                 <li><span class="divider" style="margin: 0 4px;">|</span></li>
                 <li><a href="about.html" style="font-weight: 800; font-size: 0.8rem;">ABOUT US</a></li>
             </ul>
-            <button class="navbar-icon-btn" onclick="window.location.href='login.html'" style="margin-left:8px;">
+            <button class="navbar-icon-btn"
+                onclick="if(sessionStorage.getItem('clientName')) { window.location.href='profile.html'; } else { window.location.href='login.html'; }"
+                style="margin-left:8px;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />

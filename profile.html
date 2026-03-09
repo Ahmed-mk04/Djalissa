@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Djalissa - Mon Profil</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="photo/Didi.png" />
+</head>
+
+<body>
+    <div class="page-wrapper page-fade">
+
+        <!-- NAVBAR -->
+        <nav class="navbar" style="background: transparent; border: none; padding: 24px 20px 0;">
+            <div style="border-bottom: 2px solid #8B3FC5; padding-bottom: 4px;">
+                <a href="index.html" class="navbar-brand"
+                    style="text-shadow: none; font-size: 1.4rem; letter-spacing: 2px;">DJALISSA</a>
+            </div>
+            <ul class="navbar-links" style="border-bottom: 2px solid #8B3FC5; padding-bottom: 4px;">
+                <li><a href="partner.html" style="font-weight: 800; font-size: 0.8rem;">PARTNER WITH US</a></li>
+                <li><span class="divider" style="margin: 0 4px;">|</span></li>
+                <li><a href="about.html" style="font-weight: 800; font-size: 0.8rem;">ABOUT US</a></li>
+            </ul>
+            <button class="navbar-icon-btn"
+                onclick="if(sessionStorage.getItem('clientName')) { window.location.href='profile.html'; } else { window.location.href='login.html'; }"
+                style="margin-left:8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
+            </button>
+        </nav>
+        <div style="height: 2px; background: rgba(107,33,168,0.3); margin: 6px 20px 20px;"></div>
+
+        <div
+            style="min-height: calc(100vh - 120px); display: flex; align-items: center; justify-content: center; padding: 20px;">
+            <div class="auth-card"
+                style="width: 100%; max-width: 500px; background: rgba(160, 90, 210, 0.65); padding: 50px 40px 36px; border-radius: 40px; margin-top: 50px;">
+
+                <div
+                    style="width: 120px; height: 120px; border: 4px solid #A855F7; background: transparent; padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: -100px auto 20px; position: relative;">
+                    <input type="file" id="photoInput" accept="image/*" style="display:none"
+                        onchange="uploadPhoto(this)" />
+
+                    <div id="profileImageContainer" onclick="document.getElementById('photoInput').click()"
+                        title="Changer la photo de profil"
+                        style="background: white; border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer; overflow: hidden; position: relative; transition: transform 0.2s;">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </div>
+
+                    <div onclick="document.getElementById('photoInput').click()"
+                        style="position: absolute; bottom: 0; right: 0; background: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); z-index: 2; border: 2px solid #A855F7;">
+                        <span style="font-size: 16px;">📸</span>
+                    </div>
+                </div>
+
+                <h2
+                    style="text-align:center; color:white; font-family:'Poppins',sans-serif; font-weight:800; font-size:1.1rem; margin-bottom:20px; text-transform:uppercase; letter-spacing:1px;">
+                    Mon Profil
+                </h2>
+
+                <div id="profileMsg"
+                    style="display:none; text-align:center; padding:10px 16px; border-radius:20px; font-weight:700; font-size:0.85rem; margin-bottom:16px;">
+                </div>
+
+                <div id="profileDetails" style="display:none; color: white;">
+                    <div
+                        style="margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;">
+                        <span style="font-size: 0.8rem; opacity: 0.8; display: block; text-transform: uppercase;">Nom
+                            Complet</span>
+                        <strong id="profName" style="font-size: 1.1rem;"></strong>
+                    </div>
+                    <div
+                        style="margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;">
+                        <span
+                            style="font-size: 0.8rem; opacity: 0.8; display: block; text-transform: uppercase;">Email</span>
+                        <strong id="profEmail" style="font-size: 1.1rem; word-break: break-all;"></strong>
+                    </div>
+                    <div
+                        style="margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;">
+                        <span
+                            style="font-size: 0.8rem; opacity: 0.8; display: block; text-transform: uppercase;">Téléphone</span>
+                        <strong id="profPhone" style="font-size: 1.1rem;"></strong>
+                    </div>
+                    <div
+                        style="margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;">
+                        <span style="font-size: 0.8rem; opacity: 0.8; display: block; text-transform: uppercase;">Date
+                            de naissance</span>
+                        <strong id="profBirthday" style="font-size: 1.1rem;"></strong>
+                    </div>
+                    <div
+                        style="margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;">
+                        <span
+                            style="font-size: 0.8rem; opacity: 0.8; display: block; text-transform: uppercase;">Wilaya</span>
+                        <strong id="profWilaya" style="font-size: 1.1rem;"></strong>
+                    </div>
+                </div>
+
+                <button onclick="handleLogout()" class="auth-submit-btn"
+                    style="background: linear-gradient(90deg, #A855F7, #D8B4FE); color: white; margin-top: 20px;">
+                    DÉCONNEXION
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const clientName = sessionStorage.getItem('clientName');
+            if (!clientName) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const msg = document.getElementById('profileMsg');
+            const details = document.getElementById('profileDetails');
+
+            // Load saved photo immediately if present
+            const profilePic = sessionStorage.getItem('profilePic');
+            if (profilePic && profilePic !== 'undefined' && profilePic !== '') {
+                const container = document.getElementById('profileImageContainer');
+                container.innerHTML = `<img src="http://localhost:5000${profilePic}" style="width:100%; height:100%; object-fit:cover;" alt="Profil">`;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5000/api/profile?fullName=${encodeURIComponent(clientName)}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (data.profilePic) {
+                        sessionStorage.setItem('profilePic', data.profilePic);
+                        const container = document.getElementById('profileImageContainer');
+                        container.innerHTML = `<img src="http://localhost:5000${data.profilePic}" style="width:100%; height:100%; object-fit:cover;" alt="Profil">`;
+                    }
+                    document.getElementById('profName').innerText = data.fullName;
+                    document.getElementById('profEmail').innerText = data.email;
+                    document.getElementById('profPhone').innerText = data.phone;
+                    document.getElementById('profBirthday').innerText = data.birthday;
+                    document.getElementById('profWilaya').innerText = data.wilaya;
+
+                    details.style.display = 'block';
+                } else {
+                    msg.style.background = 'rgba(239,68,68,0.35)';
+                    msg.style.color = 'white';
+                    msg.innerText = data.error || 'Erreur lors du chargement.';
+                    msg.style.display = 'block';
+                }
+            } catch (err) {
+                msg.style.background = 'rgba(239,68,68,0.35)';
+                msg.style.color = 'white';
+                msg.innerText = 'Impossible de joindre le serveur.';
+                msg.style.display = 'block';
+            }
+        });
+
+        function handleLogout() {
+            sessionStorage.removeItem('clientName');
+            sessionStorage.removeItem('profilePic');
+            window.location.href = 'index.html';
+        }
+
+        async function uploadPhoto(input) {
+            if (!input.files || input.files.length === 0) return;
+
+            const file = input.files[0];
+            const formData = new FormData();
+            formData.append('photo', file);
+            formData.append('fullName', sessionStorage.getItem('clientName'));
+
+            const msg = document.getElementById('profileMsg');
+            msg.style.display = 'none';
+
+            try {
+                const response = await fetch('http://localhost:5000/api/profile-pic', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (response.ok) {
+                    sessionStorage.setItem('profilePic', data.profilePic);
+                    // Mettre à jour l'image de la bannière
+                    const container = document.getElementById('profileImageContainer');
+                    container.innerHTML = `<img src="http://localhost:5000${data.profilePic}" style="width:100%; height:100%; object-fit:cover;" alt="Profil">`;
+
+                    // Mettre à jour l'icône de navigation
+                    document.querySelectorAll('.navbar-icon-btn').forEach(btn => {
+                        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes('sessionStorage.getItem')) {
+                            btn.innerHTML = `<img src="http://localhost:5000${data.profilePic}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" alt="Profile">`;
+                            btn.style.padding = '0';
+                            btn.style.border = '2px solid #A855F7';
+                            btn.style.overflow = 'hidden';
+                        }
+                    });
+
+                    msg.style.background = 'rgba(34,197,94,0.3)';
+                    msg.style.color = 'white';
+                    msg.innerText = 'Photo mise à jour avec succès !';
+                    msg.style.display = 'block';
+                    setTimeout(() => msg.style.display = 'none', 3500);
+                } else {
+                    msg.style.background = 'rgba(239,68,68,0.35)';
+                    msg.style.color = 'white';
+                    msg.innerText = data.error || 'Erreur lors de l\'upload.';
+                    msg.style.display = 'block';
+                }
+            } catch (err) {
+                msg.style.background = 'rgba(239,68,68,0.35)';
+                msg.style.color = 'white';
+                msg.innerText = 'Impossible de se connecter au serveur pour envoyer la photo.';
+                msg.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

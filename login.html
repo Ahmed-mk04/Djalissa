@@ -94,6 +94,7 @@
                     msg.innerText = data.message;
                     msg.style.display = 'block';
                     sessionStorage.setItem('clientName', data.name);
+                    sessionStorage.setItem('profilePic', data.profilePic || '');
                     setTimeout(() => window.location.href = 'index.html', 1200);
                 } else {
                     msg.style.background = 'rgba(239,68,68,0.35)';

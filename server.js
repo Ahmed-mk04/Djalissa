@@ -2,10 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
+const multer = require('multer');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
+// Ensure uploads directory exists
+if (!fs.existsSync('uploads')) {
+    fs.mkdirSync('uploads');
+}
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Connect to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/djalissa')
@@ -21,7 +29,8 @@ const clientSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true, lowercase: true, trim: true },
     wilaya: { type: String, required: true },
     phone: { type: String, required: true, unique: true, trim: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    profilePic: { type: String, default: '' }
 }, { timestamps: true });
 
 const Client = mongoose.model('Client', clientSchema);
@@ -48,6 +57,17 @@ const orderSchema = new mongoose.Schema({
 const Order = mongoose.model('Order', orderSchema);
 
 // Les Routes
+
+// Configuration Multer pour les images
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, '-'));
+    }
+});
+const upload = multer({ storage: storage });
 
 // Inscription
 app.post('/api/signup', async (req, res) => {
@@ -91,11 +111,58 @@ app.post('/api/login', async (req, res) => {
             return res.status(401).json({ error: 'Nom complet ou mot de passe incorrect.' });
         }
 
-        res.status(200).json({ message: 'Connexion réussie !', name: client.fullName });
+        res.status(200).json({ message: 'Connexion réussie !', name: client.fullName, profilePic: client.profilePic });
 
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Erreur serveur.' });
+    }
+});
+
+// Profil
+app.get('/api/profile', async (req, res) => {
+    try {
+        const { fullName } = req.query;
+        if (!fullName) {
+            return res.status(400).json({ error: 'Nom complet requis.' });
+        }
+
+        const client = await Client.findOne({ fullName }).select('-password');
+        if (!client) {
+            return res.status(404).json({ error: 'Client non trouvé.' });
+        }
+
+        res.status(200).json(client);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Erreur serveur.' });
+    }
+});
+
+// Upload Photo de Profil
+app.post('/api/profile-pic', upload.single('photo'), async (req, res) => {
+    try {
+        const { fullName } = req.body;
+        if (!req.file) {
+            return res.status(400).json({ error: 'Aucune image envoyée.' });
+        }
+
+        const profilePicUrl = '/uploads/' + req.file.filename;
+
+        const client = await Client.findOneAndUpdate(
+            { fullName },
+            { profilePic: profilePicUrl },
+            { new: true }
+        ).select('-password');
+
+        if (!client) {
+            return res.status(404).json({ error: 'Client non trouvé.' });
+        }
+
+        res.status(200).json({ message: 'Photo mise à jour.', profilePic: profilePicUrl });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Erreur serveur lors de l\'upload.' });
     }
 });
 
