@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Djalissa - Certificate Courses</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="photo/Didi.png" />
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .page-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: black;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: rgba(232, 121, 176, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: block;
+            border: 3px solid #E879A8;
+            box-shadow: 0 8px 24px rgba(232, 121, 176, 0.4);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(232, 121, 176, 0.6);
+            background: rgba(232, 121, 176, 0.95);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .category-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR: full width fixed, 3-column layout (same as index.html) -->
+    <nav style="position: fixed; top: 0; left: 0; width: 100vw; z-index: 1000; display: flex; align-items: center; padding: 14px 28px; box-sizing: border-box; background: transparent; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.15); transition: background 0.3s ease, box-shadow 0.3s ease;"
+        id="mainNavbar">
+        <!-- LEFT: Logo -->
+        <div style="flex: 1; display: flex; align-items: center;">
+            <a href="index.html" class="navbar-brand"
+                style="font-size: 1.4rem; letter-spacing: 2px; text-decoration: none; font-weight: 800; font-family: 'Poppins', sans-serif; color: var(--purple-dark);">DJALISSA</a>
+        </div>
+        <!-- CENTER: Links -->
+        <div style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 16px;">
+            <a href="index.html"
+                style="font-weight: 800; font-size: 0.85rem; text-decoration: none; color: var(--purple-dark); text-transform: uppercase; letter-spacing: 0.5px;">MAIN</a>
+            <span style="color: var(--purple-dark); opacity: 0.4; font-weight: 700;">|</span>
+            <a href="about.html"
+                style="font-weight: 800; font-size: 0.85rem; text-decoration: none; color: var(--purple-dark); text-transform: uppercase; letter-spacing: 0.5px;">ABOUT
+                US</a>
+        </div>
+        <!-- RIGHT: Profile -->
+        <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center;">
+            <button class="navbar-icon-btn"
+                onclick="if(sessionStorage.getItem('clientName')) { window.location.href='profile.html'; } else { window.location.href='login.html'; }"
+                aria-label="Profile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper page-fade">
+        <!-- Spacer for fixed navbar -->
+        <div class="navbar-fixed-spacer"></div>
+
+        <div class="page-header">
+            <h1 class="page-title">Babysitter Training</h1>
+            <p style="color: black; font-weight: 600;">Choose a category to
+                start learning.</p>
+        </div>
+
+        <div class="category-grid">
+            <a href="cert_cook.html" class="category-card"
+                style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.8), rgba(232, 121, 176, 0.8)); border: 3px solid rgba(255,255,255,0.3); box-shadow: 0 10px 30px rgba(168, 85, 247, 0.45); transition: all 0.3s ease;">
+                <div class="category-icon">🥣</div>
+                <div class="category-title">How To Cook A Good Meal</div>
+                <div
+                    style="margin-top: 15px; background: white; color: #a855f7; display: inline-block; padding: 6px 20px; border-radius: 20px; font-weight: 900; font-size: 0.8rem; letter-spacing: 1px;">
+                    START COURSE →</div>
+            </a>
+
+            <a href="cert_massage.html" class="category-card"
+                style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.8), rgba(232, 121, 176, 0.8)); border: 3px solid rgba(255,255,255,0.3); box-shadow: 0 10px 30px rgba(168, 85, 247, 0.45); transition: all 0.3s ease;">
+                <div class="category-icon">💆‍♀️</div>
+                <div class="category-title">How To Do Massage</div>
+                <div
+                    style="margin-top: 15px; background: white; color: #a855f7; display: inline-block; padding: 6px 20px; border-radius: 20px; font-weight: 900; font-size: 0.8rem; letter-spacing: 1px;">
+                    START COURSE →</div>
+            </a>
+
+            <a href="cert_sleep.html" class="category-card"
+                style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.8), rgba(232, 121, 176, 0.8)); border: 3px solid rgba(255,255,255,0.3); box-shadow: 0 10px 30px rgba(168, 85, 247, 0.45); transition: all 0.3s ease;">
+                <div class="category-icon">😴</div>
+                <div class="category-title">How To Make Baby Sleep</div>
+                <div
+                    style="margin-top: 15px; background: white; color: #a855f7; display: inline-block; padding: 6px 20px; border-radius: 20px; font-weight: 900; font-size: 0.8rem; letter-spacing: 1px;">
+                    START COURSE →</div>
+            </a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

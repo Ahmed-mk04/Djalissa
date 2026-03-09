@@ -17,8 +17,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Connect to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/djalissa')
-    .then(() => console.log('✅ MongoDB connecté !'))
-    .catch(err => console.error('❌ Erreur MongoDB :', err));
+    .then(() => console.log('MongoDB connecté !'))
+    .catch(err => console.error('Erreur MongoDB :', err));
 
 // Schemas et Models
 
@@ -215,5 +215,5 @@ app.post('/api/order', async (req, res) => {
 // Demarrage du serveur
 const PORT = 5000;
 app.listen(PORT, () => {
-    console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
+    console.log(`Serveur démarré sur http://localhost:${PORT}`);
 });

@@ -10,34 +10,48 @@
 </head>
 
 <body>
-    <div class="page-wrapper page-fade">
+    <!-- NAVBAR -->
+    <nav style="position: fixed; top: 0; left: 0; width: 100vw; z-index: 1000; display: flex; align-items: center; padding: 14px 28px; box-sizing: border-box; background: transparent; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.15); transition: background 0.3s ease, box-shadow 0.3s ease;"
+        id="mainNavbar">
+        <!-- LEFT: Logo (flex:1 so it takes equal space) -->
+        <div style="flex: 1; display: flex; align-items: center;">
+            <a href="index.html" class="navbar-brand"
+                style="font-size: 1.4rem; letter-spacing: 2px; text-decoration: none; font-weight: 800; font-family: 'Poppins', sans-serif; color: var(--purple-dark);">DJALISSA</a>
+        </div>
 
-        <!-- NAVBAR -->
-        <nav class="navbar" style="background: transparent; border: none; padding: 24px 20px 0;">
-            <div style="border-bottom: 2px solid #8B3FC5; padding-bottom: 4px;">
-                <a href="index.html" class="navbar-brand"
-                    style="text-shadow: none; font-size: 1.4rem; letter-spacing: 2px;">DJALISSA</a>
-            </div>
-            <ul class="navbar-links" style="border-bottom: 2px solid #8B3FC5; padding-bottom: 4px;">
-                <li><a href="partner.html" style="font-weight: 800; font-size: 0.8rem;">PARTNER WITH US</a></li>
-                <li><span class="divider" style="margin: 0 4px;">|</span></li>
-                <li><a href="about.html" style="font-weight: 800; font-size: 0.8rem;">ABOUT US</a></li>
-            </ul>
+        <!-- CENTER: Links truly centered (flex:1, justify-content:center) -->
+        <div style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 16px;">
+            <a href="partner.html"
+                style="font-weight: 800; font-size: 0.85rem; text-decoration: none; color: var(--purple-dark); text-transform: uppercase; letter-spacing: 0.5px;">PARTNER
+                WITH US</a>
+            <span style="color: var(--purple-dark); opacity: 0.4; font-weight: 700;">|</span>
+            <a href="about.html"
+                style="font-weight: 800; font-size: 0.85rem; text-decoration: none; color: var(--purple-dark); text-transform: uppercase; letter-spacing: 0.5px;">ABOUT
+                US</a>
+        </div>
+
+        <!-- RIGHT: Profile button (flex:1, justify-content:flex-end) -->
+        <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center;">
             <button class="navbar-icon-btn"
-                onclick="if(sessionStorage.getItem('clientName')) { window.location.href='profile.html'; } else { window.location.href='login.html'; }"
-                style="margin-left:8px;">
+                onclick="if(sessionStorage.getItem('clientName')) { window.location.href='profile.html'; } else { window.location.href='login.html'; }">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                     <circle cx="12" cy="7" r="4" />
                 </svg>
             </button>
-        </nav>
+        </div>
+    </nav>
+
+    <div class="page-wrapper page-fade">
+        <!-- Spacer so content starts below fixed navbar -->
+        <div class="navbar-fixed-spacer"></div>
         <div style="height: 2px; background: rgba(107,33,168,0.3); margin: 6px 20px 20px;"></div>
+
 
         <!-- HERO -->
         <section class="hero"
-            style="padding-top: 0; background: linear-gradient(135deg, rgba(232,121,176,0.8), rgba(168,85,247,0.8)); margin: 0 20px 16px; border-radius: 20px; backdrop-filter: blur(8px);">
+            style="padding-top: 0; background: rgba(232, 121, 176, 0.85); margin: 0 20px 16px; border-radius: 20px; backdrop-filter: blur(8px);">
             <div class="hero-image" style="padding-top: 15px;">
                 <img src="photo/Didi.png" alt="Djalissa Logo" />
             </div>
@@ -56,7 +70,7 @@
 
         <!-- SERVICE -->
         <section class="service-section"
-            style="background: rgba(160, 90, 210, 0.75); backdrop-filter: blur(12px); border-radius: 20px;">
+            style="background: rgba(232, 121, 176, 0.85); backdrop-filter: blur(12px); border-radius: 20px;">
             <h2 class="service-title">A ONE OF A KIND SERVICE</h2>
             <p class="service-desc" style="font-size: 1rem; line-height: 1.6; margin-top: 10px;">Djalissa offers a
                 bespoke approach to nurturing,
@@ -66,49 +80,109 @@
 
         <!-- COURSES -->
         <section class="courses-section">
-            <h2 class="section-title" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">OUR COURSES</h2>
+            <h2 class="section-title" style="color: black; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">OUR COURSES</h2>
             <div class="courses-grid">
-                <div class="course-card"
-                    style="background: linear-gradient(135deg, rgba(232,121,176,0.8), rgba(168,85,247,0.8)); border: none; padding: 26px 10px;">
-                    <div class="course-card-title" style="color: white; font-size: 1.1rem; letter-spacing: 1px;">
-                        BECOME<br />A BABYSITTER
+                <!-- BECOME A BABYSITTER card -->
+                <div onclick="window.location.href='partner.html'"
+                    style="cursor: pointer; background: linear-gradient(135deg, rgba(80, 20, 130, 0.95), rgba(50, 5, 80, 0.95)); border: 2px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 28px 20px; position: relative; overflow: hidden; box-shadow: 0 12px 36px rgba(107,33,168,0.45); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; transition: transform 0.2s, box-shadow 0.2s;"
+                    onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 16px 44px rgba(107,33,168,0.65)'"
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 12px 36px rgba(107,33,168,0.45)'">
+                    <div
+                        style="position: absolute; top: -40px; left: -40px; width: 100px; height: 100px; background: radial-gradient(circle, rgba(232,121,176,0.3) 0%, transparent 70%); border-radius: 50%;">
                     </div>
+                    <div style="font-size: 2rem;">👶</div>
+                    <div
+                        style="color: white; font-size: 1.1rem; font-weight: 900; letter-spacing: 2px; text-align: center; text-transform: uppercase;">
+                        BECOME A<br />BABYSITTER</div>
+                    <div
+                        style="background: linear-gradient(90deg, #A855F7, #E879B0); color: white; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; padding: 6px 18px; border-radius: 20px; margin-top: 4px;">
+                        START NOW →</div>
                 </div>
-                <div class="course-card"
-                    style="background: linear-gradient(135deg, rgba(232,121,176,0.8), rgba(168,85,247,0.8)); border: none; padding: 26px 10px;">
-                    <div class="course-card-title" style="color: white; font-size: 1.1rem; letter-spacing: 1px;">
+
+                <!-- YOUR CERTIFICATE card -->
+                <div onclick="window.location.href='certificate.html'"
+                    style="cursor: pointer; background: linear-gradient(135deg, rgba(80, 20, 130, 0.95), rgba(50, 5, 80, 0.95)); border: 2px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 28px 20px; position: relative; overflow: hidden; box-shadow: 0 12px 36px rgba(107,33,168,0.45); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; transition: transform 0.2s, box-shadow 0.2s;"
+                    onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 16px 44px rgba(107,33,168,0.65)'"
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 12px 36px rgba(107,33,168,0.45)'">
+                    <div
+                        style="position: absolute; top: -40px; right: -40px; width: 100px; height: 100px; background: radial-gradient(circle, rgba(232,121,176,0.3) 0%, transparent 70%); border-radius: 50%;">
+                    </div>
+                    <div style="font-size: 2rem;">🎓</div>
+                    <div
+                        style="color: white; font-size: 1.1rem; font-weight: 900; letter-spacing: 2px; text-align: center; text-transform: uppercase;">
                         YOUR<br />CERTIFICATE</div>
+                    <div
+                        style="background: linear-gradient(90deg, #A855F7, #E879B0); color: white; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; padding: 6px 18px; border-radius: 20px; margin-top: 4px;">
+                        VIEW COURSES →</div>
                 </div>
             </div>
         </section>
 
         <!-- DJ-CARE PRODUCT -->
+        <!-- DJ-CARE PRODUCT -->
         <section class="djcare-section"
-            style="background: linear-gradient(135deg, rgba(168,85,247,0.8), rgba(232,121,176,0.8)); border: none;">
-            <div class="djcare-robot" style="background: transparent; box-shadow: none;">
-                <img src="photo/Robo.png" alt="DJ-Care Robot" style="border-radius: 0;" />
+            style="background: linear-gradient(135deg, rgba(80, 20, 130, 0.95), rgba(50, 5, 80, 0.95)); border: 2px solid rgba(255, 255, 255, 0.15); padding: 20px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 20px; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 16px 48px rgba(107, 33, 168, 0.5); margin: 0 20px 24px;">
+            <!-- Decorative Light -->
+            <div
+                style="position: absolute; top: -50px; right: -50px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(232, 121, 176, 0.3) 0%, transparent 70%); border-radius: 50%;">
             </div>
-            <div class="djcare-info" style="text-align: center;">
-                <div class="djcare-name" style="color: white;">DJ-CARE</div>
-                <a href="order.html" class="djcare-buy-btn"
-                    style="background: white; color: #9D174D; border: none; padding: 6px 36px;">BUY</a>
-                <div style="margin-top: 6px;">
-                    <span class="djcare-price"
-                        style="background: linear-gradient(90deg, #A855F7, #E879B0); padding: 4px 24px; color: white;">6500
-                        DA</span>
+
+            <div style="display: flex; align-items: center; gap: 16px; flex: 1; z-index: 1;">
+                <div class="djcare-robot"
+                    style="background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.4); width: 100px; height: 100px; border-radius: 50%; padding: 8px; flex-shrink: 0; margin-bottom: 0;">
+                    <img src="photo/Robo.png" alt="DJ-Care Robot"
+                        style="border-radius: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));" />
                 </div>
+
+                <div class="djcare-info" style="text-align: left;">
+                    <div class="djcare-name"
+                        style="color: white; font-size: 1.6rem; margin-bottom: 4px; letter-spacing: 2px; text-shadow: 0 2px 8px rgba(0,0,0,0.4);">
+                        DJ-CARE</div>
+                    <div
+                        style="color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; line-height: 1.4; max-width: 350px;">
+                        <strong style="color: #F5C842; font-size: 1rem;">Your intelligent nursery
+                            companion.</strong><br />
+                        Sends instant notifications for cries or movement. Total peace of mind.
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 1;">
+                <div class="djcare-price-tag"
+                    style="font-size: 1.3rem; font-family: 'Poppins', sans-serif; font-weight: 900; color: #F5C842; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+                    6.500 <span style="font-size: 0.9rem; opacity: 0.8; font-weight: 600;">DA</span>
+                </div>
+                <a href="order.html" class="djcare-buy-btn"
+                    style="background: linear-gradient(90deg, #F59E0B, #F5C842); color: #3B0764; border: none; padding: 10px 32px; font-size: 1rem; border-radius: 30px; box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4); text-transform: uppercase; font-family: 'Poppins', sans-serif; font-weight: 900; letter-spacing: 1.5px; white-space: nowrap; transition: transform 0.3s; margin-top: 0; display: inline-block;">ORDER
+                    NOW</a>
             </div>
         </section>
 
         <!-- VALUES -->
         <section class="values-section"
-            style="background: linear-gradient(135deg, rgba(232,121,176,0.7), rgba(168,85,247,0.7)); margin: 0 20px 20px; border-radius: 20px;">
-            <div class="values-title-wrap" style="color: white;">OUR<br />VALUES</div>
-            <ul class="values-list" style="margin-left: 20px;">
-                <li style="color: white;">TRUST</li>
-                <li style="color: white;">SAFETY</li>
-                <li style="color: white;">PEACE OF MIND</li>
-                <li style="color: white;">EXCELLENCE IN CARE</li>
+            style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.75), rgba(192, 132, 252, 0.75)); margin: 0 20px 20px; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(107, 33, 168, 0.3); border: 2px solid rgba(255,255,255,0.15);">
+            <div class="values-title-wrap"
+                style="color: white; text-align: center; margin-bottom: 20px; font-size: 1.6rem; letter-spacing: 2px; max-width: 100%;">
+                OUR VALUES
+            </div>
+            <ul class="values-list"
+                style="margin-left: 0; padding: 0; width: 100%; display: grid; gap: 12px; grid-template-columns: 1fr;">
+                <li
+                    style="color: white; font-size: 1.1rem; background: rgba(255, 255, 255, 0.15); padding: 12px 20px; border-radius: 12px; text-align: center; justify-content: center; backdrop-filter: blur(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-weight: 800; letter-spacing: 1px;">
+                    TRUST
+                </li>
+                <li
+                    style="color: white; font-size: 1.1rem; background: rgba(255, 255, 255, 0.15); padding: 12px 20px; border-radius: 12px; text-align: center; justify-content: center; backdrop-filter: blur(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-weight: 800; letter-spacing: 1px;">
+                    SAFETY
+                </li>
+                <li
+                    style="color: white; font-size: 1.1rem; background: rgba(255, 255, 255, 0.15); padding: 12px 20px; border-radius: 12px; text-align: center; justify-content: center; backdrop-filter: blur(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-weight: 800; letter-spacing: 1px;">
+                    PEACE OF MIND
+                </li>
+                <li
+                    style="color: white; font-size: 1.1rem; background: rgba(255, 255, 255, 0.15); padding: 12px 20px; border-radius: 12px; text-align: center; justify-content: center; backdrop-filter: blur(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-weight: 800; letter-spacing: 1px;">
+                    EXCELLENCE IN CARE
+                </li>
             </ul>
         </section>
 
@@ -138,7 +212,8 @@
                     <div class="footer-col-title">Contact Us</div>
                     <ul class="footer-col-links" style="align-items: center;">
                         <li><a href="https://www.instagram.com/djalissa.care?igsh=MTMxdmNmMnQxZWc5Nw=="
-                                target="_blank">📷 Instagram</a></li>
+                                target="_blank">📷
+                                Instagram</a></li>
                         <li><a href="#">👤 Facebook</a></li>
                         <li><a href="#">💬 WhatsApp</a></li>
                         <li><a href="#">📞 (+213) ••••</a></li>

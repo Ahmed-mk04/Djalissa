@@ -78,13 +78,21 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px;
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.08);
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    background: transparent;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Spacer to push content below the fixed navbar */
+.navbar-fixed-spacer {
+    height: 70px;
 }
 
 .navbar-brand {

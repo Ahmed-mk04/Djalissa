@@ -92,4 +92,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Navbar scroll behavior — navbar is always fixed, just toggle white bg
+  const allNavbars = [...document.querySelectorAll('.navbar'), ...document.querySelectorAll('#mainNavbar')];
+  const uniqueNavbars = [...new Set(allNavbars)];
+  window.addEventListener('scroll', () => {
+    uniqueNavbars.forEach(navbar => {
+      if (window.scrollY > 20) {
+        navbar.style.background = 'white';
+        navbar.style.boxShadow = '0 4px 16px rgba(0,0,0,0.1)';
+        navbar.style.borderBottom = '1px solid rgba(168, 85, 247, 0.2)';
+        navbar.style.backdropFilter = 'none';
+        navbar.querySelectorAll('a, span').forEach(el => {
+          el.style.color = '#3B0764';
+        });
+      } else {
+        navbar.style.background = 'transparent';
+        navbar.style.boxShadow = 'none';
+        navbar.style.borderBottom = '1px solid rgba(255,255,255,0.15)';
+        navbar.style.backdropFilter = 'blur(12px)';
+        navbar.querySelectorAll('a, span').forEach(el => {
+          el.style.color = '';
+        });
+      }
+    });
+  });
 });
+
